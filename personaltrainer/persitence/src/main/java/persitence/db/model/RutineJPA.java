@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rutine", catalog = "personalTrainer", uniqueConstraints = {})
 
-public class Rutine extends AuditableEntity implements Serializable {
+public class RutineJPA extends AuditableEntityJPA implements Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -9108998474480071945L;
@@ -38,7 +38,7 @@ public class Rutine extends AuditableEntity implements Serializable {
 
 	@JoinColumn(name = "ID_USER_DATA", unique = false, nullable = false, insertable = true, updatable = true)
 
-	private UserData userData;
+	private UserDataJPA userData;
 
 	/** The name. */
 	@Column(name = "NAME", unique = false, nullable = false, insertable = true, updatable = true, length = 50)
@@ -51,11 +51,11 @@ public class Rutine extends AuditableEntity implements Serializable {
 
 	/** The exercise rutines. */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "rutine")
-	private Set<ExerciseRutine> exerciseRutines = new HashSet<>(0);
+	private Set<ExerciseRutineJPA> exerciseRutines = new HashSet<>(0);
 
 	/** The exercise rutine historics. */
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "rutine")
-	private Set<ExerciseRutineHistoric> exerciseRutineHistorics = new HashSet<>(0);
+	private Set<ExerciseRutineHistoricJPA> exerciseRutineHistorics = new HashSet<>(0);
 
 	/**
 	 * Gets the id rutine.
@@ -81,7 +81,7 @@ public class Rutine extends AuditableEntity implements Serializable {
 	 *
 	 * @return the user data
 	 */
-	public UserData getUserData() {
+	public UserDataJPA getUserData() {
 		return userData;
 	}
 
@@ -91,7 +91,7 @@ public class Rutine extends AuditableEntity implements Serializable {
 	 * @param userData
 	 *            the new user data
 	 */
-	public void setUserData(final UserData userData) {
+	public void setUserData(final UserDataJPA userData) {
 		this.userData = userData;
 	}
 
@@ -138,7 +138,7 @@ public class Rutine extends AuditableEntity implements Serializable {
 	 *
 	 * @return the exercise rutines
 	 */
-	public Set<ExerciseRutine> getExerciseRutines() {
+	public Set<ExerciseRutineJPA> getExerciseRutines() {
 		return exerciseRutines;
 	}
 
@@ -148,7 +148,7 @@ public class Rutine extends AuditableEntity implements Serializable {
 	 * @param exerciseRutines
 	 *            the new exercise rutines
 	 */
-	public void setExerciseRutines(final Set<ExerciseRutine> exerciseRutines) {
+	public void setExerciseRutines(final Set<ExerciseRutineJPA> exerciseRutines) {
 		this.exerciseRutines = exerciseRutines;
 	}
 
@@ -157,7 +157,7 @@ public class Rutine extends AuditableEntity implements Serializable {
 	 *
 	 * @return the exercise rutine historics
 	 */
-	public Set<ExerciseRutineHistoric> getExerciseRutineHistorics() {
+	public Set<ExerciseRutineHistoricJPA> getExerciseRutineHistorics() {
 		return exerciseRutineHistorics;
 	}
 
@@ -167,7 +167,7 @@ public class Rutine extends AuditableEntity implements Serializable {
 	 * @param exerciseRutineHistorics
 	 *            the new exercise rutine historics
 	 */
-	public void setExerciseRutineHistorics(final Set<ExerciseRutineHistoric> exerciseRutineHistorics) {
+	public void setExerciseRutineHistorics(final Set<ExerciseRutineHistoricJPA> exerciseRutineHistorics) {
 		this.exerciseRutineHistorics = exerciseRutineHistorics;
 	}
 
@@ -189,10 +189,10 @@ public class Rutine extends AuditableEntity implements Serializable {
 	 */
 	@Override
 	public boolean equals(final Object obj) {
-		if (null == idRutine || null == ((Rutine) obj).getIdRutine()) {
+		if (null == idRutine || null == ((RutineJPA) obj).getIdRutine()) {
 			return false;
 		}
-		return Objects.equals(idRutine, ((Rutine) obj).getIdRutine());
+		return Objects.equals(idRutine, ((RutineJPA) obj).getIdRutine());
 	}
 
 }

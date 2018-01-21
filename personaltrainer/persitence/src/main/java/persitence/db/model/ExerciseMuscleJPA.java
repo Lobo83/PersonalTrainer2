@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "exercise_muscle", catalog = "personalTrainer", uniqueConstraints = {})
 
-public class ExerciseMuscle extends AuditableEntity implements java.io.Serializable {
+public class ExerciseMuscleJPA extends AuditableEntityJPA implements java.io.Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 2137392001476052528L;
@@ -35,7 +35,7 @@ public class ExerciseMuscle extends AuditableEntity implements java.io.Serializa
 	/** The exercise. */
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_EXERCISE", unique = false, nullable = false, insertable = true, updatable = true)
-	private Exercise exercise;
+	private ExerciseJPA exercise;
 
 	/** The ind principal. */
 	@Column(name = "IND_PRINCIPAL", unique = false, nullable = false, insertable = true, updatable = true)
@@ -86,7 +86,7 @@ public class ExerciseMuscle extends AuditableEntity implements java.io.Serializa
 	 *
 	 * @return the exercise
 	 */
-	public Exercise getExercise() {
+	public ExerciseJPA getExercise() {
 		return exercise;
 	}
 
@@ -96,7 +96,7 @@ public class ExerciseMuscle extends AuditableEntity implements java.io.Serializa
 	 * @param exercise
 	 *            the new exercise
 	 */
-	public void setExercise(final Exercise exercise) {
+	public void setExercise(final ExerciseJPA exercise) {
 		this.exercise = exercise;
 	}
 
@@ -137,9 +137,9 @@ public class ExerciseMuscle extends AuditableEntity implements java.io.Serializa
 	 */
 	@Override
 	public boolean equals(final Object obj) {
-		if (null == idExerciseMuscle || null == ((ExerciseMuscle) obj).getIdExerciseMuscle()) {
+		if (null == idExerciseMuscle || null == ((ExerciseMuscleJPA) obj).getIdExerciseMuscle()) {
 			return false;
 		}
-		return Objects.equals(idExerciseMuscle, ((ExerciseMuscle) obj).getIdExerciseMuscle());
+		return Objects.equals(idExerciseMuscle, ((ExerciseMuscleJPA) obj).getIdExerciseMuscle());
 	}
 }

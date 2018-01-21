@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "muscle", catalog = "personalTrainer", uniqueConstraints = {})
 
-public class MuscleJPA extends AuditableEntity implements Serializable {
+public class MuscleJPA extends AuditableEntityJPA implements Serializable {
 
 	// Fields
 
@@ -36,7 +36,7 @@ public class MuscleJPA extends AuditableEntity implements Serializable {
 
 	/** The exercise muscles. */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "muscle")
-	private Set<ExerciseMuscle> exerciseMuscles = new HashSet<>(0);
+	private Set<ExerciseMuscleJPA> exerciseMuscles = new HashSet<>(0);
 
 	/**
 	 * Gets the id muscle.
@@ -81,7 +81,7 @@ public class MuscleJPA extends AuditableEntity implements Serializable {
 	 *
 	 * @return the exercise muscles
 	 */
-	public Set<ExerciseMuscle> getExerciseMuscles() {
+	public Set<ExerciseMuscleJPA> getExerciseMuscles() {
 		return exerciseMuscles;
 	}
 
@@ -91,7 +91,7 @@ public class MuscleJPA extends AuditableEntity implements Serializable {
 	 * @param exerciseMuscles
 	 *            the new exercise muscles
 	 */
-	public void setExerciseMuscles(final Set<ExerciseMuscle> exerciseMuscles) {
+	public void setExerciseMuscles(final Set<ExerciseMuscleJPA> exerciseMuscles) {
 		this.exerciseMuscles = exerciseMuscles;
 	}
 

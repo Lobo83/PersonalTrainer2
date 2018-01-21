@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "exercise_type", catalog = "personalTrainer", uniqueConstraints = {})
 
-public class ExerciseType extends AuditableEntity implements java.io.Serializable {
+public class ExerciseTypeJPA extends AuditableEntityJPA implements java.io.Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -6975875235354669181L;
@@ -40,7 +40,7 @@ public class ExerciseType extends AuditableEntity implements java.io.Serializabl
 
 	/** The exercises. */
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "exerciseType")
-	private Set<Exercise> exercises = new HashSet<>(0);
+	private Set<ExerciseJPA> exercises = new HashSet<>(0);
 
 	/**
 	 * Gets the cod exercise type.
@@ -104,7 +104,7 @@ public class ExerciseType extends AuditableEntity implements java.io.Serializabl
 	 *
 	 * @return the exercises
 	 */
-	public Set<Exercise> getExercises() {
+	public Set<ExerciseJPA> getExercises() {
 		return exercises;
 	}
 
@@ -114,7 +114,7 @@ public class ExerciseType extends AuditableEntity implements java.io.Serializabl
 	 * @param exercises
 	 *            the new exercises
 	 */
-	public void setExercises(final Set<Exercise> exercises) {
+	public void setExercises(final Set<ExerciseJPA> exercises) {
 		this.exercises = exercises;
 	}
 
@@ -136,10 +136,10 @@ public class ExerciseType extends AuditableEntity implements java.io.Serializabl
 	 */
 	@Override
 	public boolean equals(final Object obj) {
-		if (null == codExerciseType || null == ((ExerciseType) obj).getCodExerciseType()) {
+		if (null == codExerciseType || null == ((ExerciseTypeJPA) obj).getCodExerciseType()) {
 			return false;
 		}
-		return Objects.equals(codExerciseType, ((ExerciseType) obj).getCodExerciseType());
+		return Objects.equals(codExerciseType, ((ExerciseTypeJPA) obj).getCodExerciseType());
 	}
 
 }

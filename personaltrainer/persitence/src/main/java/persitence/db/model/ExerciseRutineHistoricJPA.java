@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "exercise_rutine_historic", catalog = "personalTrainer", uniqueConstraints = {})
 
-public class ExerciseRutineHistoric extends AuditableEntity implements java.io.Serializable {
+public class ExerciseRutineHistoricJPA extends AuditableEntityJPA implements java.io.Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -546452010109972344L;
@@ -31,22 +31,22 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	/** The exercise rutine. */
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_EXERCISE_RUTINE", unique = false, nullable = false, insertable = true, updatable = true)
-	private ExerciseRutine exerciseRutine;
+	private ExerciseRutineJPA exerciseRutine;
 
 	/** The rutine. */
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_RUTINE", unique = false, nullable = false, insertable = true, updatable = true)
-	private Rutine rutine;
+	private RutineJPA rutine;
 
 	/** The exercise measure. */
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "COD_EXERCISE_MEASURE_TYPE", unique = false, nullable = false, insertable = true, updatable = true)
-	private ExerciseMeasure exerciseMeasure;
+	private ExerciseMeasureJPA exerciseMeasure;
 
 	/** The exercise. */
 	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_EXERCISE", unique = false, nullable = false, insertable = true, updatable = true)
-	private Exercise exercise;
+	private ExerciseJPA exercise;
 
 	/** The series number. */
 	@Column(name = "SERIES_NUMBER")
@@ -88,7 +88,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 *
 	 * @return the exercise rutine
 	 */
-	public ExerciseRutine getExerciseRutine() {
+	public ExerciseRutineJPA getExerciseRutine() {
 		return exerciseRutine;
 	}
 
@@ -98,7 +98,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 * @param exerciseRutine
 	 *            the new exercise rutine
 	 */
-	public void setExerciseRutine(final ExerciseRutine exerciseRutine) {
+	public void setExerciseRutine(final ExerciseRutineJPA exerciseRutine) {
 		this.exerciseRutine = exerciseRutine;
 	}
 
@@ -107,7 +107,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 *
 	 * @return the rutine
 	 */
-	public Rutine getRutine() {
+	public RutineJPA getRutine() {
 		return rutine;
 	}
 
@@ -117,7 +117,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 * @param rutine
 	 *            the new rutine
 	 */
-	public void setRutine(final Rutine rutine) {
+	public void setRutine(final RutineJPA rutine) {
 		this.rutine = rutine;
 	}
 
@@ -126,7 +126,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 *
 	 * @return the exercise measure
 	 */
-	public ExerciseMeasure getExerciseMeasure() {
+	public ExerciseMeasureJPA getExerciseMeasure() {
 		return exerciseMeasure;
 	}
 
@@ -136,7 +136,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 * @param exerciseMeasure
 	 *            the new exercise measure
 	 */
-	public void setExerciseMeasure(final ExerciseMeasure exerciseMeasure) {
+	public void setExerciseMeasure(final ExerciseMeasureJPA exerciseMeasure) {
 		this.exerciseMeasure = exerciseMeasure;
 	}
 
@@ -145,7 +145,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 *
 	 * @return the exercise
 	 */
-	public Exercise getExercise() {
+	public ExerciseJPA getExercise() {
 		return exercise;
 	}
 
@@ -155,7 +155,7 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 * @param exercise
 	 *            the new exercise
 	 */
-	public void setExercise(final Exercise exercise) {
+	public void setExercise(final ExerciseJPA exercise) {
 		this.exercise = exercise;
 	}
 
@@ -253,10 +253,10 @@ public class ExerciseRutineHistoric extends AuditableEntity implements java.io.S
 	 */
 	@Override
 	public boolean equals(final Object obj) {
-		if (null == idExerciseRutineHistoric || null == ((ExerciseRutineHistoric) obj).getIdExerciseRutineHistoric()) {
+		if (null == idExerciseRutineHistoric || null == ((ExerciseRutineHistoricJPA) obj).getIdExerciseRutineHistoric()) {
 			return false;
 		}
-		return Objects.equals(idExerciseRutineHistoric, ((ExerciseRutineHistoric) obj).getIdExerciseRutineHistoric());
+		return Objects.equals(idExerciseRutineHistoric, ((ExerciseRutineHistoricJPA) obj).getIdExerciseRutineHistoric());
 	}
 
 }

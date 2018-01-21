@@ -12,7 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "bio_measure", catalog = "personalTrainer", uniqueConstraints = {})
-public class BioMeasure extends AuditableEntity implements java.io.Serializable {
+public class BioMeasureJPA extends AuditableEntityJPA implements java.io.Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 8369779953024777994L;
@@ -135,9 +135,9 @@ public class BioMeasure extends AuditableEntity implements java.io.Serializable 
 	 */
 	@Override
 	public boolean equals(final Object obj) {
-		if (null == codMeasure || null == ((BioMeasure) obj).getCodMeasure()) {
+		if (null == codMeasure || null == ((BioMeasureJPA) obj).getCodMeasure()) {
 			return false;
 		}
-		return Objects.equals(codMeasure, ((BioMeasure) obj).getCodMeasure());
+		return Objects.equals(codMeasure, ((BioMeasureJPA) obj).getCodMeasure());
 	}
 }

@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class AuditableEntity {
+public abstract class AuditableEntityJPA {
 	/** The create date. */
 	private Date createDate;
 

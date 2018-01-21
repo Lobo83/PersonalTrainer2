@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "exercise_measure", catalog = "personalTrainer", uniqueConstraints = {})
 
-public class ExerciseMeasure extends AuditableEntity implements java.io.Serializable {
+public class ExerciseMeasureJPA extends AuditableEntityJPA implements java.io.Serializable {
 
 	// Fields
 
@@ -41,12 +41,12 @@ public class ExerciseMeasure extends AuditableEntity implements java.io.Serializ
 
 	/** The exercise rutine historics. */
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "exerciseMeasure")
-	private Set<ExerciseRutineHistoric> exerciseRutineHistorics = new HashSet<>(0);
+	private Set<ExerciseRutineHistoricJPA> exerciseRutineHistorics = new HashSet<>(0);
 
 	/** The exercise rutines. */
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "exerciseMeasure")
 
-	private Set<ExerciseRutine> exerciseRutines = new HashSet<>(0);
+	private Set<ExerciseRutineJPA> exerciseRutines = new HashSet<>(0);
 
 	// Property accessors
 
@@ -112,7 +112,7 @@ public class ExerciseMeasure extends AuditableEntity implements java.io.Serializ
 	 *
 	 * @return the exercise rutine historics
 	 */
-	public Set<ExerciseRutineHistoric> getExerciseRutineHistorics() {
+	public Set<ExerciseRutineHistoricJPA> getExerciseRutineHistorics() {
 		return exerciseRutineHistorics;
 	}
 
@@ -122,7 +122,7 @@ public class ExerciseMeasure extends AuditableEntity implements java.io.Serializ
 	 * @param exerciseRutineHistorics
 	 *            the new exercise rutine historics
 	 */
-	public void setExerciseRutineHistorics(final Set<ExerciseRutineHistoric> exerciseRutineHistorics) {
+	public void setExerciseRutineHistorics(final Set<ExerciseRutineHistoricJPA> exerciseRutineHistorics) {
 		this.exerciseRutineHistorics = exerciseRutineHistorics;
 	}
 
@@ -131,7 +131,7 @@ public class ExerciseMeasure extends AuditableEntity implements java.io.Serializ
 	 *
 	 * @return the exercise rutines
 	 */
-	public Set<ExerciseRutine> getExerciseRutines() {
+	public Set<ExerciseRutineJPA> getExerciseRutines() {
 		return exerciseRutines;
 	}
 
@@ -141,7 +141,7 @@ public class ExerciseMeasure extends AuditableEntity implements java.io.Serializ
 	 * @param exerciseRutines
 	 *            the new exercise rutines
 	 */
-	public void setExerciseRutines(final Set<ExerciseRutine> exerciseRutines) {
+	public void setExerciseRutines(final Set<ExerciseRutineJPA> exerciseRutines) {
 		this.exerciseRutines = exerciseRutines;
 	}
 
@@ -163,9 +163,9 @@ public class ExerciseMeasure extends AuditableEntity implements java.io.Serializ
 	 */
 	@Override
 	public boolean equals(final Object obj) {
-		if (null == codExerciseMeasureType || null == ((ExerciseMeasure) obj).getCodExerciseMeasureType()) {
+		if (null == codExerciseMeasureType || null == ((ExerciseMeasureJPA) obj).getCodExerciseMeasureType()) {
 			return false;
 		}
-		return Objects.equals(codExerciseMeasureType, ((ExerciseMeasure) obj).getCodExerciseMeasureType());
+		return Objects.equals(codExerciseMeasureType, ((ExerciseMeasureJPA) obj).getCodExerciseMeasureType());
 	}
 }
